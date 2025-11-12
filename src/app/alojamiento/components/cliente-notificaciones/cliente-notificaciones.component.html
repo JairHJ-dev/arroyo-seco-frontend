@@ -1,0 +1,57 @@
+<section class="notificaciones">
+  <div class="tabs">
+    <h2>Notificaciones</h2>
+  </div>
+
+  <!-- Notificaciones No Leídas -->
+  <div class="section">
+    <h3>No leídas ({{ notificacionesNoLeidas.length }})</h3>
+    <div class="list" *ngIf="notificacionesNoLeidas.length > 0; else noNoLeidas">
+      <div class="notification-card no-leida" *ngFor="let notif of notificacionesNoLeidas">
+        <div class="notification-header">
+          <span class="badge" [ngClass]="notif.tipo">{{ notif.tipo }}</span>
+          <span class="fecha">{{ notif.fecha | date: 'dd/MM/yyyy HH:mm' }}</span>
+        </div>
+        <h4>{{ notif.titulo }}</h4>
+        <p>{{ notif.mensaje }}</p>
+        <div class="notification-actions">
+          <button class="btn-action" (click)="marcarLeida(notif)">
+            <span>✓</span> Marcar como leída
+          </button>
+          <button class="btn-delete" (click)="eliminar(notif)">
+            <span>✕</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <ng-template #noNoLeidas>
+      <p class="empty">No tienes notificaciones sin leer.</p>
+    </ng-template>
+  </div>
+
+  <!-- Notificaciones Leídas -->
+  <div class="section">
+    <h3>Leídas ({{ notificacionesLeidas.length }})</h3>
+    <div class="list" *ngIf="notificacionesLeidas.length > 0; else noLeidas">
+      <div class="notification-card leida" *ngFor="let notif of notificacionesLeidas">
+        <div class="notification-header">
+          <span class="badge" [ngClass]="notif.tipo">{{ notif.tipo }}</span>
+          <span class="fecha">{{ notif.fecha | date: 'dd/MM/yyyy HH:mm' }}</span>
+        </div>
+        <h4>{{ notif.titulo }}</h4>
+        <p>{{ notif.mensaje }}</p>
+        <div class="notification-actions">
+          <button class="btn-action" (click)="marcarNoLeida(notif)">
+            <span>⟲</span> Marcar como no leída
+          </button>
+          <button class="btn-delete" (click)="eliminar(notif)">
+            <span>✕</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <ng-template #noLeidas>
+      <p class="empty">No tienes notificaciones leídas.</p>
+    </ng-template>
+  </div>
+</section>

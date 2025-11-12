@@ -1,0 +1,51 @@
+<section class="login solicitud">
+  <div class="visual">
+    <div class="visual-overlay"></div>
+    <div class="visual-text">
+      <h1>Únete al sector turístico de Arroyo Seco</h1>
+      <p>Registra tu hospedaje y forma parte del padrón oficial.</p>
+    </div>
+  </div>
+
+  <div class="form-panel">
+    <div class="form-panel__content">
+      <div class="form-card">
+        <div class="logo">
+          <img src="assets/images/logo-arroyo-seco.svg" alt="Arroyo Seco" />
+        </div>
+
+        <h2>Solicitud al padrón de hospedaje</h2>
+        <p class="subtitle">Completa los datos para que podamos validar tu registro</p>
+
+        <form #f="ngForm" (ngSubmit)="submit(f)">
+          <label>
+            Nombre
+            <input type="text" name="nombre" [(ngModel)]="model.nombre" placeholder="Juan Pérez" required />
+          </label>
+
+            <label>
+              Número de teléfono
+              <input type="tel" name="telefono" [(ngModel)]="model.telefono" placeholder="442334559" required />
+            </label>
+
+            <label>
+              Contexto del negocio
+              <input type="text" name="contexto" [(ngModel)]="model.contexto" placeholder="Ej: Servicio tipo Airbnb" required />
+            </label>
+
+            <button type="submit" [disabled]="f.invalid || isSubmitting">
+              Mandar solicitud
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M2 21l21-9L2 3v7l15 2-15 2v7z" />
+              </svg>
+            </button>
+        </form>
+
+        <div class="links">
+          <a routerLink="/oferente/login">¿Ya eres oferente? Inicia sesión</a>
+          <a routerLink="/login">Cambiar de rol</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

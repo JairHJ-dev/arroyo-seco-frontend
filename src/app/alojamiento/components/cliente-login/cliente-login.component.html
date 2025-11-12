@@ -15,32 +15,20 @@
         </div>
 
         <h2>Inicio de Sesión</h2>
-        <p class="subtitle">Portal de Oferentes</p>
+        <p class="subtitle">Portal de Clientes</p>
 
-        <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+        <form #f="ngForm" (ngSubmit)="submit(f)">
           <label>
             Correo Electrónico
-            <input
-              type="email"
-              name="email"
-              placeholder="Ejemplo: correo@gmail.com"
-              [(ngModel)]="loginModel.email"
-              required
-            />
+            <input type="email" name="email" [(ngModel)]="model.email" placeholder="Ejemplo: correo@gmail.com" required/>
           </label>
 
           <label>
             Contraseña
-            <input
-              type="password"
-              name="password"
-              placeholder="Contraseña"
-              [(ngModel)]="loginModel.password"
-              required
-            />
+            <input type="password" name="password" [(ngModel)]="model.password" placeholder="Contraseña" required/>
           </label>
 
-          <button type="submit" [disabled]="loginForm.invalid">
+          <button type="submit" [disabled]="f.invalid || loading">
             Iniciar sesión
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M10 17l5-5-5-5v10zm9-14H5a2 2 0 0 0-2 2v4h2V5h14v14H5v-4H3v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z" />
@@ -51,7 +39,6 @@
         <div class="links">
           <a href="#">¿Olvidaste tu contraseña?</a>
           <a routerLink="/login">Cambiar de rol</a>
-          <a routerLink="/oferente/solicitud">¿No estás registrado? Envía tu solicitud</a>
         </div>
       </div>
     </div>

@@ -38,7 +38,7 @@ export class LoginSelectorComponent {
       description: 'Busca y reserva alojamientos en Arroyo Seco',
       route: '/cliente/login',
       icon: 'cliente',
-      color: '#10b981'
+      color: '#0891b2'
     }
   ];
 }

@@ -13,6 +13,16 @@ import { OferenteNotificacionesComponent } from './alojamiento/components/oferen
 import { OferenteConfiguracionComponent } from './alojamiento/components/oferente-configuracion/oferente-configuracion.component';
 import { LoginSelectorComponent } from './alojamiento/components/login-selector/login-selector.component';
 import { FormRegistroAlojamientoComponent } from './alojamiento/components/form-registro-alojamiento/form-registro-alojamiento.component';
+import { OferenteSolicitudComponent } from './alojamiento/components/oferente-solicitud/oferente-solicitud.component';
+import { ClienteLoginComponent } from './alojamiento/components/cliente-login/cliente-login.component';
+import { ClienteLayoutComponent } from './alojamiento/components/cliente-layout/cliente-layout.component';
+import { ListaAlojamientosComponent } from './alojamiento/components/lista-alojamientos/lista-alojamientos.component';
+import { DetalleAlojamientoComponent } from './alojamiento/components/detalle-alojamiento/detalle-alojamiento.component';
+import { ClienteReservasComponent } from './alojamiento/components/cliente-reservas/cliente-reservas.component';
+import { ClienteNotificacionesComponent } from './alojamiento/components/cliente-notificaciones/cliente-notificaciones.component';
+import { ClientePerfilComponent } from './alojamiento/components/cliente-perfil/cliente-perfil.component';
+import { ClienteFavoritosComponent } from './alojamiento/components/cliente-favoritos/cliente-favoritos.component';
+// duplicate import removed
 
 export const routes: Routes = [
   { path: 'login', component: LoginSelectorComponent },
@@ -58,6 +68,7 @@ export const routes: Routes = [
     path: 'oferente',
     children: [
       { path: 'login', component: OferenteLoginComponent },
+  { path: 'solicitud', component: OferenteSolicitudComponent },
       {
         path: '',
         component: OferenteLayoutComponent,
@@ -128,6 +139,72 @@ export const routes: Routes = [
             }
           },
           { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
+        ]
+      }
+    ]
+  },
+  {
+    path: 'cliente',
+    children: [
+      { path: 'login', component: ClienteLoginComponent },
+      {
+        path: '',
+        component: ClienteLayoutComponent,
+        children: [
+          {
+            path: 'alojamientos',
+            component: ListaAlojamientosComponent,
+            data: {
+              heroTitle: 'Encuentra tu hospedaje ideal',
+              heroSubtitle: 'Explora opciones en Arroyo Seco y sus alrededores.',
+              heroImage: 'assets/images/hero-dashboard.svg'
+            }
+          },
+          {
+            path: 'alojamientos/:id',
+            component: DetalleAlojamientoComponent,
+            data: {
+              heroTitle: 'Detalles del alojamiento',
+              heroImage: 'assets/images/hero-oferentes.svg'
+            }
+          },
+          {
+            path: 'reservas',
+            component: ClienteReservasComponent,
+            data: {
+              heroTitle: 'Mis Reservas',
+              heroSubtitle: 'Gestiona tus hospedajes reservados.',
+              heroImage: 'assets/images/hero-notificaciones.svg'
+            }
+          },
+          {
+            path: 'notificaciones',
+            component: ClienteNotificacionesComponent,
+            data: {
+              heroTitle: 'Notificaciones',
+              heroSubtitle: 'Mantente al día con nuestras novedades.',
+              heroImage: 'assets/images/hero-notificaciones.svg'
+            }
+          },
+          {
+            path: 'perfil',
+            component: ClientePerfilComponent,
+            data: {
+              heroTitle: 'Mi Perfil',
+              heroSubtitle: 'Administra tu información personal.',
+              heroImage: 'assets/images/hero-dashboard.svg'
+            }
+          },
+          {
+            path: 'favoritos',
+            component: ClienteFavoritosComponent,
+            data: {
+              heroTitle: 'Mis Favoritos',
+              heroSubtitle: 'Alojamientos guardados para más tarde.',
+              heroImage: 'assets/images/hero-oferentes.svg'
+            }
+          },
+          { path: '', redirectTo: 'alojamientos', pathMatch: 'full' }
         ]
       }
     ]

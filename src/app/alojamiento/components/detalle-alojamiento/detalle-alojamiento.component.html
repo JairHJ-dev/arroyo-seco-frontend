@@ -1,1 +1,35 @@
-<p>detalle-alojamiento works!</p>
+<section class="detalle">
+		<div class="gallery">
+			<img *ngFor="let img of gallery" [src]="img" alt="foto"/>
+		</div>
+
+	<div class="content">
+		<div class="main">
+			<h1>Cabaña Sierra Verde</h1>
+			<p class="meta">Arroyo Seco, Qro • ★ 4.7</p>
+			<p>
+				Acogedora cabaña rodeada de naturaleza, perfecta para desconectarte y disfrutar de la sierra.
+				A pocos minutos del río y de senderos para explorar.
+			</p>
+		</div>
+
+		<aside class="booking">
+			<h3>$950 <small>/ noche</small></h3>
+			<form #b="ngForm" (ngSubmit)="reservar(b)">
+				<label>
+					Fecha de entrada
+					<input type="date" name="entrada" [(ngModel)]="booking.entrada" required>
+				</label>
+				<label>
+					Fecha de salida
+					<input type="date" name="salida" [(ngModel)]="booking.salida" required>
+				</label>
+				<label>
+					Huéspedes
+					<input type="number" name="huespedes" min="1" [(ngModel)]="booking.huespedes" required>
+				</label>
+				<button type="submit" [disabled]="b.invalid">Reservar ahora</button>
+			</form>
+		</aside>
+	</div>
+</section>
