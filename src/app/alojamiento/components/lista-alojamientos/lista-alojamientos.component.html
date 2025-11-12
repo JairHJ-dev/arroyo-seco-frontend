@@ -1,0 +1,25 @@
+<div class="toolbar">
+	<input type="text" placeholder="Buscar por nombre o ubicación" [(ngModel)]="search" />
+	<select [(ngModel)]="sortMode">
+		<option value="precio">Ordenar por precio</option>
+		<option value="rating">Ordenar por rating</option>
+		<option value="nombre">Ordenar por nombre</option>
+	</select>
+</div>
+
+<section class="grid">
+		<a class="card" *ngFor="let a of filtered" [routerLink]="['/cliente/alojamientos', a.id]">
+		<div class="thumb" [style.background-image]="'url(' + a.imagen + ')'"> </div>
+		<div class="info">
+			<h3>{{ a.nombre }}</h3>
+			<p class="meta">{{ a.ubicacion }}</p>
+			<div class="bottom">
+				<span class="price">${{ a.precioNoche }} <small>/ noche</small></span>
+								<span class="rating">★ {{ a.rating }}</span>
+			</div>
+		</div>
+				<button class="fav" [class.active]="isFavorite(a.id)" (click)="toggleFavorite(a, $event)" aria-label="Favorito">
+					<span>★</span>
+				</button>
+	</a>
+</section>
